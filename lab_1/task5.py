@@ -7,7 +7,8 @@ from task2 import scan_annotation
 class ClassedAnnotationIterator:
     columns = []
     def __init__(self, class_name: str, annotation_path: str) -> None:
-        """Initializes Iterator that can iterate through given annotation returning only items of given class.
+        """Initializes Iterator that can iterate through given annotation
+        returning only items of given class.
 
         Args:
             class_name (str): Preffered item class.
@@ -41,7 +42,8 @@ class ClassedAnnotationIterator:
 class ClassedDatasetIterator:
     data = []
     def __init__(self, class_name: str, dataset_paths: list[str]) -> None:
-        """Initializes Iterator that can iterate through given annotation returning only items of given class.
+        """Initializes Iterator that can iterate through given annotation
+        returning only items of given class.
 
         Args:
             class_name (str): Preffered item class.
@@ -76,7 +78,10 @@ if __name__ == '__main__':
     for i in s_iter1:
         print(i)
     
-    s_iter2 = ClassedDatasetIterator("bay horse", ["dataset\\bay horse", "dataset\\zebra"])
+    s_iter2 = ClassedDatasetIterator(
+        "bay horse", 
+        ["dataset\\bay horse", "dataset\\zebra"]
+    )
     print(next(s_iter2))
     print(next(s_iter2))
     print(next(s_iter2))

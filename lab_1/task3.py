@@ -36,7 +36,11 @@ def randomized_dataset_copy(dataset: list[list[str]], copy_path: str) -> list[li
         cv2.imwrite(fr'{copy_path}\{img_name}', img)
         print(row)
         print("Saved successfully")
-        result.append([os.path.abspath(fr'{copy_path}\{img_name}'), fr'{copy_path}\{img_name}', img_class])
+        result.append([
+            os.path.abspath(fr'{copy_path}\{img_name}'),
+            fr'{copy_path}\{img_name}',
+            img_class
+        ])
     return result
 
 

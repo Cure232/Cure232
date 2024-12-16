@@ -73,12 +73,18 @@ class Window(QMainWindow):
         """
         Данная функция создает два объекта-итератора
         """
-        self.horse = ClassedDatasetIterator("bay horse", [r"dataset\bay horse"])
-        self.zebra = ClassedDatasetIterator("zebra", [r"dataset\zebra"])
+        self.horse = ClassedDatasetIterator(
+            "bay horse", [r"dataset\bay horse"]
+        )
+
+        self.zebra = ClassedDatasetIterator(
+            "zebra", [r"dataset\zebra"]
+        )
 
     def next_horse(self) -> None:
         """
-        Данная функция получает путь к следующему изображению horse и размещает на экране
+        Данная функция получает путь к следующему
+        изображению horse и размещает на экране
         """
         lbl_size = self.lbl.size()
         try: 
@@ -98,7 +104,8 @@ class Window(QMainWindow):
 
     def next_zebra(self) -> None:
         """
-        Данная функция получает путь к следующему изображению zebra и размещает на экране
+        Данная функция получает путь к следующему 
+        изображению zebra и размещает на экране
         """
         lbl_size = self.lbl.size()
         try: 
@@ -144,8 +151,14 @@ class Window(QMainWindow):
 
         self.dataset_name = dataset_name
         if os.path.exists(dataset_path + "\\bay horse") and os.path.exists(dataset_path + "\\zebra"):
-            data = scan_dataset([dataset_name + "\\bay horse", dataset_name + "\\zebra"])
-            save_as_csv(data, ["Abs Path", "Rel Path", "Item Class"], dataset_name + "_annotation.csv")
+            data = scan_dataset([
+                dataset_name + "\\bay horse",
+                dataset_name + "\\zebra"
+            ])
+            save_as_csv(
+                data, ["Abs Path", "Rel Path", "Item Class"],
+                dataset_name + "_annotation.csv"
+            )
             
             self.create_database_2_action = QAction(
                 QIcon(), "&Create dataset2"

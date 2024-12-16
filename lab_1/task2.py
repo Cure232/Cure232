@@ -47,7 +47,11 @@ def copy_dataset(dataset: list[list[str]], copy_path: str) -> list[list[str]]:
         img = cv2.imread(row[1])
         cv2.imwrite(fr'{copy_path}\{new_img_name}', img)
 
-        result.append([os.path.abspath(fr'{copy_path}\{new_img_name}'), fr'{copy_path}\{new_img_name}', img_class])
+        result.append([
+            os.path.abspath(fr'{copy_path}\{new_img_name}'),
+            fr'{copy_path}\{new_img_name}',
+            img_class
+        ])
         print(row)
         print("Saved successfully")
     

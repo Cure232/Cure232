@@ -30,7 +30,11 @@ def scan_dataset(folder_paths: list[str]) -> list[list[str]]:
     for folder in folder_paths:
         item_class = folder.split('\\')[-1]
         for name in os.listdir(folder):
-            result.append([os.path.abspath(folder + '\\' + name), f'{folder}\\{name}', item_class])
+            result.append([
+                os.path.abspath(folder + '\\' + name),
+                    f'{folder}\\{name}',
+                    item_class
+                ])
     return result
 
 
