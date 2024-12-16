@@ -47,8 +47,7 @@ if __name__ == "__main__":
 
     columns = ["Absolute path", "Relative path", "Class"]
     data = scan_dataset([rel_path1, rel_path2])
-    #save_as_csv(data, columns, 'annotation.csv')
-
+    
     new_data1 = data[:2]
     new_data2 = data[:4]
     new_data1 += new_data2

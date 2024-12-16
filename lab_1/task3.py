@@ -29,9 +29,11 @@ def randomized_dataset_copy(dataset: list[list[str]], copy_path: str) -> list[li
 
     for row in dataset:
         img_class = row[-1]
-        img_name = str(random.randint(0, 10000)) + '.jpg'
+        img_name = img_name = f"{random.randint(0, 10000)}.jpg"
+
         while img_name in img_names:
-            img_name = str(random.randint(0, 10000)) + '.jpg'
+            img_name = img_name = f"{random.randint(0, 10000)}.jpg"
+
         img_names.add(img_name)
 
         img = cv2.imread(row[1])

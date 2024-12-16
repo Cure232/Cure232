@@ -50,14 +50,14 @@ class Window(QMainWindow):
         button_zebra.setStyleSheet("QPushButton {background-color: #B8B8FF}")
 
         pixmap = QPixmap()
-        self.lbl = QLabel(self)
-        self.lbl.setPixmap(pixmap)
-        self.lbl.setAlignment(Qt.AlignCenter)
+        self.label = QLabel(self)
+        self.label.setPixmap(pixmap)
+        self.label.setAlignment(Qt.AlignCenter)
 
         box = QHBoxLayout()
         box.addSpacing(1)
         box.addWidget(button_horse)
-        box.addWidget(self.lbl)
+        box.addWidget(self.label)
         box.addWidget(button_zebra)
 
         self.centralWidget.setLayout(box)
@@ -86,7 +86,7 @@ class Window(QMainWindow):
         Данная функция получает путь к следующему
         изображению horse и размещает на экране
         """
-        lbl_size = self.lbl.size()
+        label_size = self.label.size()
         try: 
             next_image = next(self.horse)
         except StopIteration:
@@ -94,10 +94,10 @@ class Window(QMainWindow):
 
         if next_image != None:
             img = QPixmap(next_image).scaled(
-                lbl_size, aspectRatioMode=Qt.KeepAspectRatio
+                label_size, aspectRatioMode=Qt.KeepAspectRatio
             )
-            self.lbl.setPixmap(img)
-            self.lbl.setAlignment(Qt.AlignCenter)
+            self.label.setPixmap(img)
+            self.label.setAlignment(Qt.AlignCenter)
         else:
             self.create_iter()
             self.next_horse()
@@ -107,7 +107,7 @@ class Window(QMainWindow):
         Данная функция получает путь к следующему 
         изображению zebra и размещает на экране
         """
-        lbl_size = self.lbl.size()
+        label_size = self.label.size()
         try: 
             next_image = next(self.zebra)
         except StopIteration:
@@ -115,10 +115,10 @@ class Window(QMainWindow):
 
         if next_image != None:
             img = QPixmap(next_image).scaled(
-                lbl_size, aspectRatioMode=Qt.KeepAspectRatio
+                label_size, aspectRatioMode=Qt.KeepAspectRatio
             )
-            self.lbl.setPixmap(img)
-            self.lbl.setAlignment(Qt.AlignCenter)
+            self.label.setPixmap(img)
+            self.label.setAlignment(Qt.AlignCenter)
         else:
             self.create_iter()
             self.next_zebra()
