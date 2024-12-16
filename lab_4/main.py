@@ -14,9 +14,8 @@ def write_txt(file_path: str, data: str) -> None:
             file.write(data)
             basic_logger.info(f"Results were written in {file_path}")
 
-            
     except Exception as e:
-       print("Произошла ошибка:", e)
+       basic_logger.error(f"Произошла ошибка:, {e}", exc_info=e)
 
 
 def read_txt(file_path: str) -> str:
@@ -33,7 +32,7 @@ def read_txt(file_path: str) -> str:
             basic_logger.info(f"Info was read from {file_path}")
             return file.read().replace("\n", " \n")
     except Exception as e:
-       print("Произошла ошибка:", e)
+       basic_logger.error(f"Произошла ошибка:, {e}", exc_info=e)
 
 
 def main() -> None:
@@ -56,7 +55,7 @@ def main() -> None:
     java_lst = longest_sequence_test(java_bit_string)
     result += f"longest_once_sequence_test: {java_lst}\n"
 
-    foo_str = '1'*128
+    foo_str = '1'*127
     print("non randomized sequence example:", foo_str,
           f"frequency_bit_test: {frequency_bit_test(foo_str)}",
           f"consecutive_bits_test: {consecutive_bits_test(foo_str)}",

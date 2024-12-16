@@ -26,6 +26,7 @@ def frequency_bit_test(bit_string: str) -> float:
     """
 
     if any([symbol not in ['0','1'] for symbol in bit_string]):
+        basic_logger.error(f"Wrong function input")
         raise ValueError("This is not a bitstring")
 
     sum = 0
@@ -61,6 +62,7 @@ def consecutive_bits_test(bit_string: str) -> float:
     """
 
     if any([symbol not in ['0','1'] for symbol in bit_string]):
+        basic_logger.error(f"Wrong function input")
         raise ValueError("This is not a bitstring")
 
     ones_ratio = bit_string.count('1') / len(bit_string)
@@ -108,9 +110,11 @@ def longest_sequence_test(bit_string: str) -> float:
     MAX_BLOCK_LENGTH = 8
 
     if any([symbol not in ['0','1'] for symbol in bit_string]):
+        basic_logger.error(f"Wrong function input")
         raise ValueError("This is not a bitstring")
 
     if len(bit_string) != 128:
+        basic_logger.error(f"Wrong function input")
         raise ValueError(f"This test is designed for 128 bits long string")
 
     block_stats = {key: 0 for key in NATURAL_PROBABILITIES.keys()}
