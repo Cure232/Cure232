@@ -1,4 +1,5 @@
 import os
+
 import pandas as pd
 
 
@@ -6,7 +7,8 @@ def save_as_csv(to_save: list[list[str]], columns: list[str], relpath: str) -> N
     """Saves given data table as csv
 
     Args:
-        to_save (list[list[str]]): Table (matrix) of strings to be saved, formatted as in scan_dataset.
+        to_save (list[list[str]]): Table (matrix) of strings to be saved,
+        formatted as in scan_dataset.
 
         columns (list[str]): Name of data's columns.
 
@@ -18,7 +20,8 @@ def save_as_csv(to_save: list[list[str]], columns: list[str], relpath: str) -> N
 
 
 def scan_dataset(folder_paths: list[str]) -> list[list[str]]:
-    """This function scans given datasets and returns them in a form that can be saved as csv.
+    """This function scans given datasets and returns them in a form 
+    that can be saved as csv.
 
     Args:
         folder_paths (list[str]): Paths to datasets to be scanned.

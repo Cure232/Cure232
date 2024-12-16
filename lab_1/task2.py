@@ -1,6 +1,6 @@
 import os
-
 import csv
+
 import cv2
 
 from task1 import save_as_csv
@@ -25,10 +25,12 @@ def scan_annotation(annotation_path: str) -> list[list[str]]:
 
 
 def copy_dataset(dataset: list[list[str]], copy_path: str) -> list[list[str]]:
-    """Copies dataset without columns in given folder without creating additional inner folders.
+    """Copies dataset without columns in given folder,
+    without creating additional inner folders.
 
     Args:
-        dataset (list[list[str]]): Data as a table (matrix) of strings without columns.
+        dataset (list[list[str]]): Data as a table (matrix)
+        of strings without columns.
         copy_path (str): Folder where you copy the dataset.
 
     Returns:

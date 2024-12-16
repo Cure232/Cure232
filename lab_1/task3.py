@@ -9,10 +9,12 @@ from task1 import save_as_csv
 
 
 def randomized_dataset_copy(dataset: list[list[str]], copy_path: str) -> list[list[str]]:
-    """Copies given dataset into given folder while giving images unique random names.
+    """Copies given dataset into given folder
+    while giving images unique random names.
 
     Args:
-        dataset (list[list[str]]): Data as a table (matrix) of strings without columns.
+        dataset (list[list[str]]): Data as a table (matrix)
+        of strings without columns.
         copy_path (str): Folder where you copy the dataset.
 
     Returns:
@@ -45,7 +47,7 @@ def randomized_dataset_copy(dataset: list[list[str]], copy_path: str) -> list[li
 
 
 def dataset_3(annotation_path: str) -> None:
-    """Creates copy of a dataset as in task 3 and creates annotation
+    """Creates copy of a dataset as in task 3 and creates annotation.
 
     Args:
         annotation_path (str): Annotation of given dataset
