@@ -63,7 +63,7 @@ def consecutive_bits_test(bit_string: str) -> float:
 
     ones_ratio = bit_string.count('1') / len(bit_string)
 
-    if abs(ones_ratio - 0.5) < (2 / math.sqrt(len(bit_string))):
+    if (ones_ratio != 1.0) and (abs(ones_ratio - 0.5) < (2 / math.sqrt(len(bit_string)))):
         sign_alteration_count = sum(
             [0 if bit_string[i] == bit_string[i + 1] else 1
             for i in range(len(bit_string) - 1)]

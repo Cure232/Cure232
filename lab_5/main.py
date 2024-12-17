@@ -1,4 +1,5 @@
-from tests import *
+from old_tests import *
+from lab5_tests import *
 
 
 def write_txt(file_path: str, data: str) -> None:
@@ -38,8 +39,10 @@ def main() -> None:
     result = "cpp:\n"
     cpp_fbt = frequency_bit_test(cpp_bit_string)
     result += f"frequency_bit_test: {cpp_fbt}\n"
+
     cpp_cbt = consecutive_bits_test(cpp_bit_string)
     result += f"consecutive_bits_test: {cpp_cbt}\n"
+
     cpp_lst = longest_sequence_test(cpp_bit_string)
     result += f"longest_once_sequence_test: {cpp_lst}\n\n"
 
@@ -62,5 +65,8 @@ def main() -> None:
     write_txt(file_path='results.txt', data=result)
 
 
+
+
 if __name__ == '__main__':
-    main() 
+    pytest.main(["lab5_tests.py"])
+    #main() 
