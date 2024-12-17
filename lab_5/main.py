@@ -1,5 +1,5 @@
 from old_tests import *
-from lab5_tests import *
+from _test import *
 
 
 def write_txt(file_path: str, data: str) -> None:
