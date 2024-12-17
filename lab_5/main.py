@@ -68,5 +68,5 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    pytest.main(["lab5_tests.py"])
+    pytest.main(["_test.py"])
     #main() 
