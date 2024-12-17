@@ -39,9 +39,9 @@ def test_identical_consecutive_bits4():
 @pytest.mark.parametrize("input_text, expected_result", [
     ("1"*128, 0),
     ("0"*128, 0),
-    (read_txt("resources/cpp_sequence.txt"), 0.4),
-    (read_txt("resources/java_sequence.txt"), 0.25),
-])
+    ("00110111100000100011011101001111001100100111000100000011101001101101110100000101011000000011100010000111000001000001111011111000", 0.4),
+    ("11001001110000101010011100010101101101101001100111001011000111010110100111001100010110100011010100101111111111000001110000010111", 0.25),
+])  #Сначала CPP, потом Java.
 def test_longest_sequence_test(input_text, expected_result):
     result = longest_sequence_test(input_text)
     assert abs(result - expected_result) < 0.05
