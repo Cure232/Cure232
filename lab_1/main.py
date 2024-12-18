@@ -17,6 +17,7 @@ BG_COLOR = (40, 40, 60)  # Background color
 BLOCK_COLOR = (20, 128, 200)  # Color of the blocks
 BLACK = (0, 0, 0)
 RED = (200, 30, 30)      # Font color for "GAME OVER"
+ORIGINAL_SPEED = 0.5      # Original speed
 
 def print_text(screen, font, x, y, text, fcolor=(255, 255, 255)):
     """Render text on the screen."""
@@ -42,8 +43,7 @@ def main():
     game_over = True
     start = False       # Whether the game has started
     score = 0           # Current score
-    orispeed = 0.5      # Original speed
-    speed = orispeed    # Current speed
+    speed = ORIGINAL_SPEED    # Current speed
     pause = False       # Pause state
     last_drop_time = None   # Last drop time
     last_press_time = None  # Last key press time
@@ -77,7 +77,7 @@ def main():
                     score += 700
                 elif remove_count == 4:
                     score += 1500
-                speed = orispeed - 0.03 * (score // 10000)
+                speed = ORIGINAL_SPEED - 0.03 * (score // 10000)
                 # Clear lines
                 _i = _j = remove_idxs[-1]
                 while _i >= 0:
