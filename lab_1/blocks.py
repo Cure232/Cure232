@@ -5,24 +5,27 @@ Point = namedtuple('Point', 'X Y')
 Shape = namedtuple('Shape', 'X Y Width Height')
 Block = namedtuple('Block', 'template start_pos end_pos name next')
 
-# 方块形状的设计，我最初我是做成 4 × 4，因为长宽最长都是4，这样旋转的时候就不考虑怎么转了，就是从一个图形替换成另一个
-# 其实要实现这个功能，只需要固定左上角的坐标就可以了
+# The design of block shapes: Initially, I designed them as 4x4 grids because the maximum length and width are 4.
+# This way, rotation is simplified by just replacing one shape with another.
+# To implement this, fixing the top-left corner coordinate is sufficient.
 
-# S形方块
+# S-shaped block
 S_BLOCK = [Block(['.OO',
                   'OO.',
                   '...'], Point(0, 0), Point(2, 1), 'S', 1),
            Block(['O..',
                   'OO.',
                   '.O.'], Point(0, 0), Point(1, 2), 'S', 0)]
-# Z形方块
+
+# Z-shaped block
 Z_BLOCK = [Block(['OO.',
                   '.OO',
                   '...'], Point(0, 0), Point(2, 1), 'Z', 1),
            Block(['.O.',
                   'OO.',
                   'O..'], Point(0, 0), Point(1, 2), 'Z', 0)]
-# I型方块
+
+# I-shaped block
 I_BLOCK = [Block(['.O..',
                   '.O..',
                   '.O..',
@@ -31,10 +34,12 @@ I_BLOCK = [Block(['.O..',
                   '....',
                   'OOOO',
                   '....'], Point(0, 2), Point(3, 2), 'I', 0)]
-# O型方块
+
+# O-shaped block
 O_BLOCK = [Block(['OO',
                   'OO'], Point(0, 0), Point(1, 1), 'O', 0)]
-# J型方块
+
+# J-shaped block
 J_BLOCK = [Block(['O..',
                   'OOO',
                   '...'], Point(0, 0), Point(2, 1), 'J', 1),
@@ -47,7 +52,8 @@ J_BLOCK = [Block(['O..',
            Block(['.O.',
                   '.O.',
                   'OO.'], Point(0, 0), Point(1, 2), 'J', 0)]
-# L型方块
+
+# L-shaped block
 L_BLOCK = [Block(['..O',
                   'OOO',
                   '...'], Point(0, 0), Point(2, 1), 'L', 1),
@@ -60,7 +66,8 @@ L_BLOCK = [Block(['..O',
            Block(['OO.',
                   '.O.',
                   '.O.'], Point(0, 0), Point(1, 2), 'L', 0)]
-# T型方块
+
+# T-shaped block
 T_BLOCK = [Block(['.O.',
                   'OOO',
                   '...'], Point(0, 0), Point(2, 1), 'T', 1),
@@ -84,6 +91,7 @@ BLOCKS = {'O': O_BLOCK,
 
 
 def get_block():
+    """Randomly select a block and return it."""
     block_name = random.choice('OIZTLSJ')
     b = BLOCKS[block_name]
     idx = random.randint(0, len(b) - 1)
@@ -91,5 +99,6 @@ def get_block():
 
 
 def get_next_block(block):
+    """Get the next rotational state of the block."""
     b = BLOCKS[block.name]
     return b[block.next]
