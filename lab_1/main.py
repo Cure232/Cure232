@@ -20,11 +20,24 @@ RED = (200, 30, 30)      # Font color for "GAME OVER"
 ORIGINAL_SPEED = 0.5      # Original speed
 
 def print_text(screen, font, x, y, text, fcolor=(255, 255, 255)):
-    """Render text on the screen."""
+    """
+    Render text on the screen.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+        font (pygame.font.Font): The font used for rendering text.
+        x (int): X-coordinate for the text.
+        y (int): Y-coordinate for the text.
+        text (str): The text to render.
+        fcolor (tuple): The font color.
+    """
     imgText = font.render(text, True, fcolor)
     screen.blit(imgText, (x, y))
 
 def main():
+    """
+    Main function to initialize and run the Tetris game loop.
+    """
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Tetris')
@@ -49,7 +62,9 @@ def main():
     last_press_time = None  # Last key press time
 
     def _dock():
-        """Handle the docking of blocks at the bottom or on other blocks."""
+        """
+        Handle the docking of blocks at the bottom or on other blocks.
+        """
         nonlocal cur_block, next_block
         nonlocal game_area, cur_pos_x, cur_pos_y
         nonlocal game_over, score, speed
@@ -95,7 +110,17 @@ def main():
             cur_pos_y = -1 - cur_block.end_pos.Y
 
     def _judge(pos_x, pos_y, block):
-        """Judge whether the block can be placed at the given position."""
+        """
+        Judge whether the block can be placed at the given position.
+
+        Args:
+            pos_x (int): X-coordinate of the block.
+            pos_y (int): Y-coordinate of the block.
+            block (Block): The block to check.
+
+        Returns:
+            bool: True if the block can be placed, False otherwise.
+        """
         nonlocal game_area
         for _i in range(block.start_pos.Y, block.end_pos.Y + 1):
             if pos_y + block.end_pos.Y >= BLOCK_HEIGHT:
@@ -193,7 +218,12 @@ def main():
 
 # Draw the background
 def _draw_background(screen):
-    """Fill the background and draw border lines."""
+    """
+    Fill the background and draw border lines.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+    """
     screen.fill(BG_COLOR)
     pygame.draw.line(screen, BORDER_COLOR,
                      (SIZE * BLOCK_WIDTH + BORDER_WIDTH // 2, 0),
@@ -201,7 +231,12 @@ def _draw_background(screen):
 
 # Draw gridlines
 def _draw_gridlines(screen):
-    """Draw the gridlines on the game board."""
+    """
+    Draw the gridlines on the game board.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+    """
     for x in range(BLOCK_WIDTH):
         pygame.draw.line(screen, BLACK, (x * SIZE, 0), (x * SIZE, SCREEN_HEIGHT), 1)
     for y in range(BLOCK_HEIGHT):
@@ -209,7 +244,13 @@ def _draw_gridlines(screen):
 
 # Draw the blocks already placed
 def _draw_game_area(screen, game_area):
-    """Draw blocks that have landed on the game area."""
+    """
+    Draw blocks that have landed on the game area.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+        game_area (list): The grid representing the game area.
+    """
     if game_area:
         for i, row in enumerate(game_area):
             for j, cell in enumerate(row):
@@ -218,7 +259,17 @@ def _draw_game_area(screen, game_area):
 
 # Draw a single block
 def _draw_block(screen, block, offset_x, offset_y, pos_x, pos_y):
-    """Draw a block at the given position."""
+    """
+    Draw a block at the given position.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+        block (Block): The block to draw.
+        offset_x (int): X-offset for drawing.
+        offset_y (int): Y-offset for drawing.
+        pos_x (int): X-coordinate on the grid.
+        pos_y (int): Y-coordinate on the grid.
+    """
     if block:
         for i in range(block.start_pos.Y, block.end_pos.Y + 1):
             for j in range(block.start_pos.X, block.end_pos.X + 1):
@@ -228,7 +279,16 @@ def _draw_block(screen, block, offset_x, offset_y, pos_x, pos_y):
 
 # Draw score and other information
 def _draw_info(screen, font, pos_x, font_height, score):
-    """Draw game score and speed information."""
+    """
+    Draw game score and speed information.
+
+    Args:
+        screen (pygame.Surface): The game screen.
+        font (pygame.font.Font): The font for rendering text.
+        pos_x (int): X-coordinate for rendering information.
+        font_height (int): Height of the font.
+        score (int): The current game score.
+    """
     print_text(screen, font, pos_x, 10, f'Score: ')
     print_text(screen, font, pos_x, 10 + font_height + 6, f'{score}')
     print_text(screen, font, pos_x, 20 + (font_height + 6) * 2, f'Speed: ')

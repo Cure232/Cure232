@@ -2,8 +2,26 @@ import random
 from collections import namedtuple
 
 Point = namedtuple('Point', 'X Y')
+"""
+Point represents a coordinate with X and Y values.
+"""
+
 Shape = namedtuple('Shape', 'X Y Width Height')
+"""
+Shape represents a geometric figure with:
+- X and Y coordinates for the top-left corner
+- Width and Height dimensions.
+"""
+
 Block = namedtuple('Block', 'template start_pos end_pos name next')
+"""
+Block represents a Tetris block with:
+- template: The layout of the block as a grid of characters.
+- start_pos: The top-left coordinate of the block.
+- end_pos: The bottom-right coordinate of the block.
+- name: The type of the block (e.g., 'S', 'Z').
+- next: The index of the next rotation state.
+"""
 
 # The design of block shapes: Initially, I designed them as 4x4 grids because the maximum length and width are 4.
 # This way, rotation is simplified by just replacing one shape with another.
@@ -91,7 +109,12 @@ BLOCKS = {'O': O_BLOCK,
 
 
 def get_block():
-    """Randomly select a block and return it."""
+    """
+    Randomly select a block and return it.
+
+    Returns:
+        Block: A randomly selected block instance.
+    """
     block_name = random.choice('OIZTLSJ')
     b = BLOCKS[block_name]
     idx = random.randint(0, len(b) - 1)
@@ -99,6 +122,14 @@ def get_block():
 
 
 def get_next_block(block):
-    """Get the next rotational state of the block."""
+    """
+    Get the next rotational state of the block.
+
+    Args:
+        block (Block): The current block.
+
+    Returns:
+        Block: The next rotation state of the block.
+    """
     b = BLOCKS[block.name]
     return b[block.next]
