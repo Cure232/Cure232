@@ -1,6 +1,5 @@
 import pytest
 
-from main import read_txt
 from old_tests import frequency_bit_test, consecutive_bits_test, longest_sequence_test
 
 @pytest.mark.parametrize("input_text, expected_result", [
@@ -45,3 +44,14 @@ def test_identical_consecutive_bits4():
 def test_longest_sequence_test(input_text, expected_result):
     result = longest_sequence_test(input_text)
     assert abs(result - expected_result) < 0.05
+
+
+def test_longest_sequence_crash_test1():
+    with pytest.raises(ValueError, match="This test is designed for 128 bits long string"):
+        result = longest_sequence_test("100")
+    
+
+def test_longest_sequence_crash_test2():
+    with pytest.raises(ValueError, match="This is not a bitstring"):
+        result = longest_sequence_test("404not a bit string")
+    
