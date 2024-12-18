@@ -19,6 +19,7 @@ BLACK = (0, 0, 0)
 RED = (200, 30, 30)      # Font color for "GAME OVER"
 ORIGINAL_SPEED = 0.5      # Original speed
 
+
 def print_text(screen, font, x, y, text, fcolor=(255, 255, 255)):
     """
     Render text on the screen.
@@ -33,6 +34,7 @@ def print_text(screen, font, x, y, text, fcolor=(255, 255, 255)):
     """
     imgText = font.render(text, True, fcolor)
     screen.blit(imgText, (x, y))
+
 
 def main():
     """
@@ -60,6 +62,7 @@ def main():
     pause = False       # Pause state
     last_drop_time = None   # Last drop time
     last_press_time = None  # Last key press time
+
 
     def _dock():
         """
@@ -108,6 +111,7 @@ def main():
             next_block = blocks.get_block()
             cur_pos_x  = (BLOCK_WIDTH - cur_block.end_pos.X - 1) // 2
             cur_pos_y = -1 - cur_block.end_pos.Y
+
 
     def _judge(pos_x, pos_y, block):
         """
@@ -294,6 +298,7 @@ def _draw_info(screen, font, pos_x, font_height, score):
     print_text(screen, font, pos_x, 20 + (font_height + 6) * 2, f'Speed: ')
     print_text(screen, font, pos_x, 20 + (font_height + 6) * 3, f'{score // 10000}')
     print_text(screen, font, pos_x, 30 + (font_height + 6) * 4, f'Next:')
+
 
 if __name__ == '__main__':
     main()
