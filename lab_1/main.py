@@ -1,7 +1,9 @@
 ﻿import sys
 import time
+
 import pygame
 from pygame.locals import *
+
 import blocks
 
 SIZE = 30  # Size of each grid cell
