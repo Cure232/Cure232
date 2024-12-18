@@ -48,7 +48,10 @@ def main():
 
     def _dock():
         """Handle the docking of blocks at the bottom or on other blocks."""
-        nonlocal cur_block, next_block, game_area, cur_pos_x, cur_pos_y, game_over, score, speed
+        nonlocal cur_block, next_block
+        nonlocal game_area, cur_pos_x, cur_pos_y
+        nonlocal game_over, score, speed
+
         for _i in range(cur_block.start_pos.Y, cur_block.end_pos.Y + 1):
             for _j in range(cur_block.start_pos.X, cur_block.end_pos.X + 1):
                 if cur_block.template[_i][_j] != '.':
@@ -86,7 +89,8 @@ def main():
                     _j -= 1
             cur_block = next_block
             next_block = blocks.get_block()
-            cur_pos_x, cur_pos_y = (BLOCK_WIDTH - cur_block.end_pos.X - 1) // 2, -1 - cur_block.end_pos.Y
+            cur_pos_x  = (BLOCK_WIDTH - cur_block.end_pos.X - 1) // 2
+            cur_pos_y = -1 - cur_block.end_pos.Y
 
     def _judge(pos_x, pos_y, block):
         """Judge whether the block can be placed at the given position."""
@@ -95,7 +99,10 @@ def main():
             if pos_y + block.end_pos.Y >= BLOCK_HEIGHT:
                 return False
             for _j in range(block.start_pos.X, block.end_pos.X + 1):
-                if pos_y + _i >= 0 and block.template[_i][_j] != '.' and game_area[pos_y + _i][pos_x + _j] != '.':
+                if pos_y + _i >= 0 and (
+                    block.template[_i][_j] != '.' and (
+                        game_area[pos_y + _i][pos_x + _j] != '.'
+                    )):
                     return False
         return True
 
@@ -114,7 +121,8 @@ def main():
                         game_area = [['.'] * BLOCK_WIDTH for _ in range(BLOCK_HEIGHT)]
                         cur_block = blocks.get_block()
                         next_block = blocks.get_block()
-                        cur_pos_x, cur_pos_y = (BLOCK_WIDTH - cur_block.end_pos.X - 1) // 2, -1 - cur_block.end_pos.Y
+                        cur_pos_x = (BLOCK_WIDTH - cur_block.end_pos.X - 1) // 2
+                        cur_pos_y = -1 - cur_block.end_pos.Y
                 elif event.key == K_SPACE:
                     if not game_over:
                         pause = not pause
@@ -172,7 +180,8 @@ def main():
         else:
             if start:
                 print_text(screen, font2,
-                           (SCREEN_WIDTH - gameover_size[0]) // 2, (SCREEN_HEIGHT - gameover_size[1]) // 2,
+                           (SCREEN_WIDTH - gameover_size[0]) // 2,
+                           (SCREEN_HEIGHT - gameover_size[1]) // 2,
                            'GAME OVER', RED)
 
         # Draw the current falling block
